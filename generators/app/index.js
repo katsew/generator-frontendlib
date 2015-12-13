@@ -30,10 +30,10 @@ module.exports = yeoman.generators.Base.extend({
     }, {
       type: 'list',
       name: 'license',
+      message: 'License',
       choices: ['MIT', 'Apache v2 License', 'GPL v2', 'LGPL v3', 'none'],
       default: 'MIT'
-    }
-    ];
+    }];
 
     this.prompt(prompts, function (props) {
       this.props = props;
@@ -89,6 +89,8 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function () {
-    this.installDependencies();
+    this.installDependencies({
+      bower: false
+    });
   }
 });
