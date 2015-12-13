@@ -13,7 +13,13 @@ describe('generator-frontendlib:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'dummyfile.txt'
+      'circle.yml',
+      '.editorconfig',
+      '.gitignore',
+      '.travis.yml',
+      'index.js',
+      'package.json',
+      'README.md'
     ]);
   });
 });

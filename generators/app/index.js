@@ -13,11 +13,27 @@ module.exports = yeoman.generators.Base.extend({
     ));
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
+      type: 'input',
+      name: 'name',
+      message: 'library name',
+      default: this.appname
+    }, {
+      type: 'input',
+      name: 'description',
+      message: 'description',
+      default: ''
+    }, {
+      type: 'input',
+      name: 'author',
+      message: 'author',
+      default: ''
+    }, {
+      type: 'list',
+      name: 'license',
+      choices: ['MIT', 'Apache v2 License', 'GPL v2', 'LGPL v3', 'none'],
+      default: 'MIT'
+    }
+    ];
 
     this.prompt(prompts, function (props) {
       this.props = props;
@@ -28,9 +44,47 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
+
+
     this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+      this.templatePath('_.editorconfig'),
+      this.destinationPath('.editorconfig')
+    );
+    this.fs.copy(
+      this.templatePath('_.gitignore'),
+      this.destinationPath('.gitignore')
+    );
+    this.fs.copy(
+      this.templatePath('_.travis.yml'),
+      this.destinationPath('.travis.yml')
+    );
+    this.fs.copy(
+      this.templatePath('circle.yml'),
+      this.destinationPath('circle.yml')
+    );
+
+    this.fs.copy(
+      this.templatePath('index.js'),
+      this.destinationPath('index.js')
+    );
+    this.fs.copy(
+      this.templatePath('lib'),
+      this.destinationPath('lib')
+    );
+    this.fs.copy(
+      this.templatePath('test'),
+      this.destinationPath('test')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'),
+      this.props
+    );
+    this.fs.copyTpl(
+      this.templatePath('_README.md'),
+      this.destinationPath('README.md'),
+      this.props
     );
   },
 
