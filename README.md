@@ -1,5 +1,5 @@
 # generator-frontendlib [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Genetator for develop fronend libraries.
+> Genetator for develop frontend libraries.
 
 ## Installation
 
